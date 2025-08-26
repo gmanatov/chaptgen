@@ -5,8 +5,25 @@ import { useState } from 'react';
 export default function Home() {
   const [url, setUrl] = useState('');
 
-  function handleGenerate() {
-    console.log('YouTube URL:', url);
+  async function handleGenerate() {
+    try {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/transcripts`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify({ url }),
+      });
+
+      if (!res.ok) {
+        console.error('Backend error', await res.text());
+        return;
+      }
+
+      const data = await res.json();
+      console.log('Enqueued OK:', data);
+    } catch (e) {
+      console.error('Network error:', e);
+    }
   }
 
   return (
