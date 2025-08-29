@@ -8,3 +8,15 @@ spring:
   flyway:
     enabled: true
     locations: classpath:db/migration
+
+youtubeTranscript:
+  apiKey: "apikey here (hidden)"
+
+gemini:
+  apiKey: "apikey here (hidden)"
+
+auth:
+  jwtSecret: "change-me-dev-secret"
+  jwtDays: 14
+  cookieName: "chaptgen_token"
+  cookieDomain: "localhost"
