@@ -80,51 +80,48 @@ Users can paste a YouTube link, generate chapters with Google Gemini, and save/m
 CREATE DATABASE chaptgen;
 CREATE USER chaptgen WITH PASSWORD 'chaptgen';
 GRANT ALL PRIVILEGES ON DATABASE chaptgen TO chaptgen;
+```
 
 ### 2. Backend
 
-Configure API keys in application.yml or environment variables:
+Configure API keys in application.yml or environment variables ([youtube-transcript API key](https://youtube-transcript.io) and [Google Gemini API key](https://ai.google.dev/gemini-api/docs/quickstart#java)) are required):
 
 Run backend:
-./mvnw spring-boot:run
+`./mvnw spring-boot:run`
 
 Backend starts on:
-http://localhost:8080
+`http://localhost:8080`
 
 ### 3. Frontend
 
 Navigate to frontend folder:
-npm install
-npm run dev
+`npm install`
+`npm run dev`
 
 Frontend starts on:
-http://localhost:3000
+`http://localhost:3000`
 
-Usage
+### 4. Additional Notes
+
+#### Usage
 	1.	Open frontend at http://localhost:3000.
 	2.	Sign up with a new email/password.
 	3.	Paste a YouTube video URL and click Generate Chapters.
 	4.	Preview results, then click Save to keep them in your gallery.
 	5.	Access My Generations to search, view, edit, or delete.
 
-⸻
-
-Authentication Notes
+#### Authentication Notes
 	•	Passwords are stored securely using BCrypt.
 	•	A JWT token is set in an httpOnly cookie (chaptgen_token) when you log in or sign up.
 	•	Backend checks this cookie on every /transcripts request.
 	•	Logout clears the cookie.
 
-⸻
-
-Known Limitations
+#### Known Limitations
 	•	Only works for YouTube videos with transcripts available.
 	•	AI results (Gemini) are limited to the first ~hour of transcript (no chunking yet).
 	•	Cookie is not marked Secure in local dev (so it works on http://localhost). Enable it in production.
 
-⸻
-
-Possible Improvements
+#### Possible Improvements
 	•	Support longer videos by chunking transcripts.
 	•	Multi-language transcript selection.
 	•	Deployment config (Docker).
