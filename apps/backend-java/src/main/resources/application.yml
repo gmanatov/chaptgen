@@ -10,10 +10,10 @@ spring:
     locations: classpath:db/migration
 
 youtubeTranscript:
-  apiKey: "apikey here (hidden)"
+  apiKey: "68adbab037253092c1f3a02f"
 
 gemini:
-  apiKey: "apikey here (hidden)"
+  apiKey: "AIzaSyD7cBzEdhgLmLjt6HoKnoPK5oQf-1LqKZw"
 
 auth:
   jwtSecret: "change-me-dev-secret"
